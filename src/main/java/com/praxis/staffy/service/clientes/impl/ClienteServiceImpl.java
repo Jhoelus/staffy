@@ -206,4 +206,27 @@ public class ClienteServiceImpl implements ClienteService{
 			return response;
 		}
 	}
+
+	@Override
+	@Transactional
+	public RespuestaGeneral<?> deleteCustomer(long idCliente) throws SerialException, SQLException {
+		log.info("Servicio clientes: DELETE cliente");
+		
+		RespuestaGeneral<ClienteDto> response = new RespuestaGeneral<ClienteDto>();
+		
+		if(clienteRepository.existsById(idCliente)) {
+			ClienteEntity clienteBDD = clienteRepository.findById(idCliente).orElse(null);
+			clienteRepository.delete(clienteBDD);
+			
+			response.setCode(MensajesAplicacion.MENSAJE_EXITO.getCodigo());
+			response.setMessage(MensajesAplicacion.MENSAJE_EXITO.getMensaje());
+			response.setData(null);
+		} else {
+			response.setCode(MensajesAplicacion.MENSAJE_FALLO.getCodigo());
+			response.setMessage(MensajesAplicacion.MENSAJE_FALLO.getMensaje());
+			response.setData(null);
+		}
+				
+		return response;
+	}
 }

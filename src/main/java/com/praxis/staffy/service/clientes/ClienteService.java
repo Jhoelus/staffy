@@ -14,4 +14,5 @@ public interface ClienteService {
 	RespuestaGeneral<?> addCustomer(ClienteDto cliente) throws SerialException, SQLException;
 	RespuestaGeneral<?> realizarFiltroByNombre(String nombreLike);
 	RespuestaGeneral<?> updateCustomer(ClienteDto cliente) throws SerialException, SQLException;
+	RespuestaGeneral<?> deleteCustomer(long idCliente) throws SerialException, SQLException;
 }

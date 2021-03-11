@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -65,4 +66,9 @@ public class ClienteController {
 		return new ResponseEntity<RespuestaGeneral<?>>(clienteService.updateCustomer(cliente), HttpStatus.OK);
 	}
 	
+	@DeleteMapping(path= RecursosController.PATH_CLIENTES_DELETE)
+	public ResponseEntity<RespuestaGeneral<?>>  deleteCliente(@PathVariable(name = "idCliente", required = true) long idCliente) throws SerialException, SQLException {
+		log.info("Controller clientes: DELETE cliente");
+		return new ResponseEntity<RespuestaGeneral<?>>(clienteService.deleteCustomer(idCliente), HttpStatus.OK);
+	}
 }

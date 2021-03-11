@@ -13,6 +13,7 @@ public interface RecursosController {
 	String PATH_CLIENTES_FIND_BYID = "/clientes/{idCliente}";
 	String PATH_CLIENTES_ADD = "/clientes";
 	String PATH_CLIENTES_NOMBRE = "/clientes/filtro";
+	String PATH_CLIENTES_DELETE = "/clientes/{idCliente}";
 	
 	String PATH_NOTIFICACIONES = "/notificaciones";
 	
